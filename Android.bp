@@ -1,0 +1,47 @@
+cc_library_shared {
+    name: "libwavtest",
+
+    srcs: [
+        "WavTest.cpp",
+    ],
+
+    shared_libs: [
+        "libcutils",
+        "liblog",
+        "libutils",
+    ],
+
+    cflags: [
+        "-Werror",
+        "-Wall",
+    ],
+}
+
+cc_binary {
+    name: "audiotracktest",
+
+    srcs: ["audiotracktest.cpp"],
+
+    shared_libs: [
+        "liblog",
+        "libcutils",
+        "libutils",
+        "libbinder",
+        "libhardware_legacy",
+        "libmedia",
+        "libaudioclient",
+        "libwavtest",
+    ],
+
+    header_libs: [
+        "libmediametrics_headers",
+    ],
+
+    cflags: [
+        "-Wall",
+        "-Werror",
+        "-Wno-error=deprecated-declarations",
+        "-Wunused",
+        "-Wunreachable-code",
+    ],
+}
